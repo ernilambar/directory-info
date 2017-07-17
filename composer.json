@@ -1,0 +1,13 @@
+{
+  "name": "ernilambar/directory-info",
+  "type": "wordpress-plugin",
+  "version": "1.0.0",
+  "description": "Directory Info",
+  "authors": [{
+    "name": "Nilambar Sharma",
+    "email": "nilambar@outlook.com"
+    }],
+    "require": {
+      "rarst/wporg-client": "^0.4.0"
+    }
+  }
