@@ -17,9 +17,10 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 
 = Using FTP =
 
-1. Extract 'directory-info.zip' to your computer
-1. Upload the 'directory-info' directory to your 'wp-content/plugins' directory
-1. Activate the plugin on the WordPress Plugins dashboard
+* Download zip file https://github.com/ernilambar/directory-info/releases/download/1.0.0/directory-info.1.0.0.zip
+* Extract zip file to your computer
+* Upload the 'directory-info' directory to your 'wp-content/plugins' directory
+* Activate the plugin on the WordPress Plugins dashboard
 
 == Frequently Asked Questions ==
 
