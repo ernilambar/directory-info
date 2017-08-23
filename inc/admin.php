@@ -74,7 +74,7 @@ function directory_info_render_themes_section() {
 						<td><?php echo esc_html( $theme['version'] ); ?></td>
 						<td><time class="timeago" datetime="<?php echo esc_attr( $theme['last_updated'] ); ?>"><?php echo esc_html( $theme['last_updated'] ); ?></time></td>
 						<td><?php echo esc_html( $theme['downloaded'] ); ?></td>
-						<td><img src="<?php echo esc_url( $theme['screenshot_url'] ); ?>" alt="" class="thumb" /></td>
+						<td><img class="lazy thumb" data-src="<?php echo esc_url( $theme['screenshot_url'] ); ?>" alt="" src="<?php echo DIRECTORY_INFO_URL . '/images/no-image.png'; ?>" /></td>
 					</tr>
 					<?php $cnt++; ?>
 				<?php endforeach; ?>
@@ -130,7 +130,7 @@ function directory_info_render_plugins_section() {
 						<?php $screenshots = ( isset( $plugin['screenshots'] ) && ! empty( $plugin['screenshots'] ) ) ? $plugin['screenshots'] : array(); ?>
 						<?php if ( ! empty( $screenshots ) ) : ?>
 							<?php $first_scr = array_shift( $screenshots ); ?>
-							<img src="<?php echo esc_url( $first_scr['src'] ); ?>" alt="" class="thumb" />
+							<img data-src="<?php echo esc_url( $first_scr['src'] ); ?>" alt="" class="thumb lazy" src="<?php echo DIRECTORY_INFO_URL . '/images/no-image.png'; ?>" />
 						<?php endif; ?>
 						</td>
 					</tr>
@@ -149,7 +149,6 @@ function directory_info_render_plugins_section() {
 
 	</div><!-- .directory-wrapper .directory-plugin-wrapper -->
 	<?php
-
 }
 
 /**
@@ -165,6 +164,7 @@ function directory_info_admin_scripts( $hook ) {
 	}
 
 	wp_enqueue_style( 'directory-info-admin', DIRECTORY_INFO_URL . '/css/admin.css', array(), '1.0.0' );
+	wp_enqueue_script( 'directory-info-lazy', DIRECTORY_INFO_URL . '/third-party/lazy/jquery.lazy.min.js', array(), '1.7.5' );
 	wp_enqueue_script( 'directory-info-timeago', DIRECTORY_INFO_URL . '/third-party/timeago/jquery.timeago.js', array(), '1.6.0' );
 	wp_enqueue_script( 'directory-info-custom', DIRECTORY_INFO_URL . '/js/custom.js', array(), '1.0.0' );
 }
