@@ -8,6 +8,6 @@
     "email": "nilambar@outlook.com"
     }],
     "require": {
-      "rarst/wporg-client": "^0.4.0"
+      "rarst/wporg-client": "^0.5.0"
     }
   }
