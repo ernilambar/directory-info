@@ -35,12 +35,3 @@ if ( file_exists(  DIRECTORY_INFO_DIR . '/vendor/autoload.php' ) ) {
 if ( class_exists( 'DirectoryInfo\Init' ) ) {
 	\DirectoryInfo\Init::register_services();
 }
-
-return;
-
-// Load helpers.
-require_once DIRECTORY_INFO_DIR . '/inc/helpers.php';
-
-// Load admin.
-require_once DIRECTORY_INFO_DIR . '/inc/admin.php';
-
