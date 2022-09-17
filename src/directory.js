@@ -1,3 +1,5 @@
+import './sass/directory.scss';
+
 (function( $ ) {
 	'use strict';
 
