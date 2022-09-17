@@ -48,15 +48,11 @@ class Admin {
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 			<hr />
 
-			<?php
-			// Helper::get_plugins_info( 'rabmalin' );
-			?>
-
 			<form action="" method="post" class="frm-directory-info" id="frm-directory-info">
 				<div class="org-id-wrap">
 					<label for="wporg_id">
 						<?php esc_html_e( 'Enter WordPress.org ID', 'directory-info' ); ?>
-						<input type="text" name="wporg_id" id="wporg_id" value="rabmalin" />
+						<input type="text" name="wporg_id" id="wporg_id" value="" />
 					</label>
 					<button class="button button-secondary" name="btn-submit-di"><?php esc_attr_e( 'GO', 'directory-info' ); ?></button>
 					<div id="di-loading" style="display:none;">Processing</div>
@@ -81,6 +77,12 @@ class Admin {
 
 		wp_enqueue_style( 'directory-info-admin', DIRECTORY_INFO_URL . '/assets/directory.css', array(), DIRECTORY_INFO_VERSION );
 		wp_enqueue_script( 'directory-info-admin', DIRECTORY_INFO_URL . '/assets/directory.js', array( 'jquery' ), DIRECTORY_INFO_VERSION, true );
+
+		$data = array(
+			'placeholder_url' => DIRECTORY_INFO_URL . '/assets/static/no-image.png',
+		);
+
+		wp_localize_script( 'directory-info-admin', 'diObject', $data );
 	}
 
 	/**

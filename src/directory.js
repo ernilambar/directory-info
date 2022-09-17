@@ -1,10 +1,24 @@
 import './sass/directory.scss';
 
 import './vendors/timeago.js';
+import 'jquery-lazy';
+
+import './images/no-image.png';
 
 jQuery( function( $ ) {
 	const initTimeAgo = () => {
 		$( 'time.timeago' ).timeago();
+	};
+
+	const initLazyLoad = () => {
+		$( '.lazy' ).Lazy( {
+			onError( element ) {
+				const imageSrc = $( element ).attr( 'data-src' );
+				const newUrl = imageSrc.replace( '.png', '.jpg' );
+				$( element ).attr( 'data-src', newUrl );
+				$( element ).attr( 'src', newUrl );
+			},
+		} );
 	};
 
 	const generateThemesMarkup = ( themes ) => {
@@ -30,7 +44,7 @@ jQuery( function( $ ) {
 			<td>${ theme.version }</td>
 			<td><time class="timeago" datetime="${ theme.last_updated_w3c }">${ theme.last_updated }</time></td>
 			<td>${ theme.downloaded }</td>
-			<td><img class="thumb" src="${ theme.screenshot_url }" alt="${ theme.name }"/></td>
+			<td><img class="thumb lazy" data-src="${ theme.screenshot_url }" src="${ diObject.placeholder_url }" alt="${ theme.name }"/></td>
 			</tr>`;
 
 			cnt++;
@@ -69,7 +83,7 @@ jQuery( function( $ ) {
 			let thumb = ' ';
 
 			if ( thumbnailUrl ) {
-				thumb = `<img class="thumb" src="${ thumbnailUrl }" alt="${ plugin.name }"/>`;
+				thumb = `<img class="thumb lazy" data-src="${ thumbnailUrl }" src="${ diObject.placeholder_url }" alt="${ plugin.name }"/>`;
 			}
 
 			markup += `<tr>
@@ -124,27 +138,10 @@ jQuery( function( $ ) {
 
 				$loading.hide();
 				initTimeAgo();
+				initLazyLoad();
 			},
 		} );
 
 		return false;
 	} );
 } );
-
-// (function( $ ) {
-
-// 	jQuery(document).ready(function() {
-// 		jQuery("time.timeago").timeago();
-
-// 		$('.lazy').Lazy({
-// 			onError: function(element) {
-// 				var data_src = $( element ).attr( 'data-src' );
-// 				var new_url = data_src.replace( '.png', '.jpg' );
-// 				$( element ).attr( 'data-src', new_url );
-// 				$( element ).attr( 'src', new_url );
-// 			}
-// 		});
-
-// 	});
-
-// })( jQuery );
