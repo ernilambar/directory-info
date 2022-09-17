@@ -1,9 +1,9 @@
 === Directory Info ===
 Contributors: rabmalin
 Tags: theme info, plugin info
-Requires at least: 4.6
-Tested up to: 4.8
-Stable tag: 1.0.0
+Requires at least: 4.9
+Tested up to: 6.1
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,9 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 * `Forced Refresh` - Enable this to sync data from the directory. If disabled, cache will be kept for 24 hours.
 
 == Changelog ==
+
+= 1.0.1 - 17 Sep 2022 =
+* Minor bug fixes
 
 = 1.0.0 =
 * Initial release
