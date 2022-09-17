@@ -1,0 +1,17 @@
+.directory-wrapper {
+	table {
+		margin: 20px 0;
+
+		td {
+			padding: 10px;
+		}
+	}
+
+	.thumb {
+		width: 50px;
+	}
+
+	&.directory-plugin-wrapper .thumb {
+		max-height: 50px;
+	}
+}

@@ -1,4 +1,5 @@
 === Directory Info ===
+
 Contributors: rabmalin
 Tags: theme info, plugin info
 Requires at least: 4.9
@@ -15,12 +16,18 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 
 == Installation ==
 
+= Using The WordPress Dashboard =
+
+1. Navigate to the 'Add New' Plugin Dashboard
+1. Select 'directory-info.zip' from your computer
+1. Upload
+1. Activate the plugin on the WordPress Plugin Dashboard
+
 = Using FTP =
 
-* Download zip file https://github.com/ernilambar/directory-info/releases/download/1.0.0/directory-info.1.0.0.zip
-* Extract zip file to your computer
-* Upload the 'directory-info' directory to your 'wp-content/plugins' directory
-* Activate the plugin on the WordPress Plugins dashboard
+1. Extract 'directory-info.zip' to your computer
+1. Upload the 'directory-info' directory to your 'wp-content/plugins' directory
+1. Activate the plugin on the WordPress Plugins dashboard
 
 == Frequently Asked Questions ==
 
@@ -39,5 +46,8 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 = 1.0.1 - 17 Sep 2022 =
 * Minor bug fixes
 
-= 1.0.0 =
+= 1.0.0 - 17 Jul 2017 =
 * Initial release
+
+== Upgrade Notice ==
+Directory Info
