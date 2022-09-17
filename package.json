@@ -1,30 +1,27 @@
 {
   "name": "directory-info",
   "title": "Directory Info",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "GPL-2.0+",
-  "main": "Gruntfile.js",
   "main_file": "directory-info.php",
-  "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-checktextdomain": "~1.0.0",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-copy": "~0.8.2",
-    "grunt-contrib-cssmin": "~0.14.0",
-    "grunt-contrib-jshint": "~1.0.0",
-    "grunt-contrib-nodeunit": "~1.0.0",
-    "grunt-contrib-uglify": "~1.0.1",
-    "grunt-push-svn": "~0.2.2",
-    "grunt-svn-export": "~0.1.7",
-    "grunt-text-replace": "~0.4.0",
-    "grunt-wp-i18n": "~0.5.4"
-  },
-  "engines": {
-    "node": ">=0.8.0",
-    "npm": ">=1.1.0"
-  },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:ernilambar/directory-info.git"
+    "url": "https://github.com/ernilambar/directory-info"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "version": "easy-replace-in-files",
+    "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
+    "textdomain": "wpi18n addtextdomain --exclude=vendor,deploy,node_modules",
+    "predeploy": "shx rm -rf vendor/ && composer install --no-dev --no-scripts -o",
+    "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
+  },
+  "devDependencies": {
+    "bestzip": "^2.2.1",
+    "copy-files-from-to": "^3.2.2",
+    "cross-var": "^1.1.0",
+    "easy-replace-in-files": "^1.0.3",
+    "node-wp-i18n": "^1.2.6",
+    "shx": "^0.3.4"
   }
 }
