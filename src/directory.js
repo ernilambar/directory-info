@@ -1,6 +1,12 @@
 import './sass/directory.scss';
 
+import './vendors/timeago.js';
+
 jQuery( function( $ ) {
+	const initTimeAgo = () => {
+		$( 'time.timeago' ).timeago();
+	};
+
 	const generateThemesMarkup = ( themes ) => {
 		if ( themes.length === 0 ) {
 			return;
@@ -22,7 +28,7 @@ jQuery( function( $ ) {
 			<td>${ cnt }</td>
 			<td><a href="https://wordpress.org/themes/${ theme.slug }/" target="_blank">${ theme.name }</a></td>
 			<td>${ theme.version }</td>
-			<td>${ theme.last_updated }</td>
+			<td><time class="timeago" datetime="${ theme.last_updated_w3c }">${ theme.last_updated }</time></td>
 			<td>${ theme.downloaded }</td>
 			<td><img class="thumb" src="${ theme.screenshot_url }" alt="${ theme.name }"/></td>
 			</tr>`;
@@ -70,7 +76,7 @@ jQuery( function( $ ) {
 			<td>${ cnt }</td>
 			<td><a href="https://wordpress.org/plugins/${ plugin.slug }/" target="_blank">${ plugin.name }</a></td>
 			<td>${ plugin.version }</td>
-			<td>${ plugin.last_updated }</td>
+			<td><time class="timeago" datetime="${ plugin.last_updated_w3c }">${ plugin.last_updated }</time></td>
 			<td>${ plugin.downloaded }</td>
 			<td>${ thumb }</td>
 			</tr>`;
@@ -101,6 +107,8 @@ jQuery( function( $ ) {
 
 			beforeSend() {
 				$loading.show();
+				$( '#di-themes-output' ).html( '' );
+				$( '#di-plugins-output' ).html( '' );
 			},
 
 			complete( jqXHR ) {
@@ -115,8 +123,8 @@ jQuery( function( $ ) {
 				}
 
 				$loading.hide();
+				initTimeAgo();
 			},
-
 		} );
 
 		return false;

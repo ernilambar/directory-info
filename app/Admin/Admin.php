@@ -48,6 +48,10 @@ class Admin {
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 			<hr />
 
+			<?php
+			// Helper::get_plugins_info( 'rabmalin' );
+			?>
+
 			<form action="" method="post" class="frm-directory-info" id="frm-directory-info">
 				<div class="org-id-wrap">
 					<label for="wporg_id">
