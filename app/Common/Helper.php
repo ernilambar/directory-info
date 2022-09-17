@@ -42,7 +42,18 @@ class Helper {
 			$themes = $wporgClient->getThemesBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
 
 			if ( $themes ) {
-				$output = $themes['themes'];
+				$all_themes = $themes['themes'];
+
+				if ( ! empty( $all_themes ) ) {
+					$all_themes = array_map(function ($el) {
+						$item = $el;
+						$item['last_updated_w3c'] = date( DATE_W3C, strtotime( $el['last_updated_time'] ) );
+						return $item;
+					}, $all_themes);
+
+					$output = $all_themes;
+				}
+
 			}
 
 			set_transient( $transient_key, $output, $transient_period );
@@ -77,7 +88,18 @@ class Helper {
 			$plugins = $wporgClient->getPluginsBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
 
 			if ( $plugins ) {
-				$output = $plugins['plugins'];
+				$all_plugins = $plugins['plugins'];
+
+				if ( ! empty( $all_plugins ) ) {
+					$all_plugins = array_map(function ($el) {
+						$item = $el;
+						$item['last_updated_w3c'] = date( DATE_W3C, strtotime( $el['last_updated'] ) );
+						return $item;
+					}, $all_plugins);
+
+					$output = $all_plugins;
+				}
+
 			}
 
 			set_transient( $transient_key, $output, $transient_period );

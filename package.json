@@ -9,12 +9,12 @@
     "url": "https://github.com/ernilambar/directory-info"
   },
   "scripts": {
-		"dev": "webpack --watch",
-		"build": "webpack",
-		"prod": "NODE_ENV=production webpack",
-		"eslint": "eslint --quiet .",
-		"eslint:fix": "eslint --quiet --fix .",
-		"format": "prettier --write \"src/**/*.scss\"",
+    "dev": "webpack --watch",
+    "build": "webpack",
+    "prod": "NODE_ENV=production webpack",
+    "eslint": "eslint --quiet .",
+    "eslint:fix": "eslint --quiet --fix .",
+    "format": "prettier --write \"src/**/*.scss\"",
     "preinstall": "npx only-allow pnpm",
     "version": "easy-replace-in-files",
     "pot": "wpi18n makepot --domain-path=languages --exclude=vendor,deploy,node_modules",
@@ -23,7 +23,7 @@
     "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
   },
   "browserslist": "> 1%, not dead",
-	"prettier": "@wordpress/prettier-config",
+  "prettier": "@wordpress/prettier-config",
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",

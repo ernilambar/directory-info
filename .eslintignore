@@ -3,3 +3,4 @@ node_modules/
 vendor/
 third-party/
 assets/
+src/vendors/
