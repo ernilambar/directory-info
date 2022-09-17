@@ -6,7 +6,12 @@
     "name": "Nilambar Sharma",
     "email": "nilambar@outlook.com"
     }],
-    "require": {
-      "rarst/wporg-client": "^0.6.0"
-    }
-  }
+	"require": {
+		"rarst/wporg-client": "^0.6.0"
+	},
+	"autoload" : {
+		"psr-4": {
+			"DirectoryInfo\\": "app/"
+		}
+	}
+}
