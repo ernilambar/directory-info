@@ -1,11 +1,37 @@
 import './sass/directory.scss';
 
 import './vendors/timeago.js';
+import Toastify from 'toastify-js';
 import 'jquery-lazy';
 
 import './images/no-image.png';
 
 jQuery( function( $ ) {
+	const notify = ( message, type = 'success' ) => {
+		if ( ! message ) {
+			return;
+		}
+
+		let background = '#22bb33';
+
+		if ( 'info' === type ) {
+			background = '#5bc0de';
+		} else if ( 'error' === type ) {
+			background = '#bb2124';
+		}
+
+		Toastify( {
+			text: message,
+			offset: {
+				x: 50,
+				y: 50,
+			},
+			style: {
+				background,
+			},
+		} ).showToast();
+	};
+
 	const initTimeAgo = () => {
 		$( 'time.timeago' ).timeago();
 	};
@@ -105,6 +131,7 @@ jQuery( function( $ ) {
 		const wporgId = $( '#wporg_id' ).val();
 
 		if ( '' === wporgId ) {
+			notify( 'Please enter WordPress.org ID', 'error' );
 			return false;
 		}
 
@@ -134,6 +161,8 @@ jQuery( function( $ ) {
 
 					const pluginsMarkup = generatePluginsMarkup( response.data.plugins );
 					$( '#di-plugins-output' ).html( pluginsMarkup );
+				} else {
+					notify( 'No data found.', 'error' );
 				}
 
 				$loading.hide();
