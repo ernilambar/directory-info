@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cdcc484a9e24f1a48519f9bd00959f9",
+    "content-hash": "d125f00af8a1a86b3aec25309bdbf259",
     "packages": [
+        {
+            "name": "ernilambar/wp-welcome",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ernilambar/wp-welcome.git",
+                "reference": "961799377bbd89bc6b17c25f620b0648562a4692"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ernilambar/wp-welcome/zipball/961799377bbd89bc6b17c25f620b0648562a4692",
+                "reference": "961799377bbd89bc6b17c25f620b0648562a4692",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nilambar Sharma",
+                    "email": "nilambar@outlook.com",
+                    "homepage": "https://www.nilambar.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Create welcome page in WordPress. Useful for themes to showcase related information.",
+            "homepage": "https://github.com/ernilambar/wp-welcome",
+            "keywords": [
+                "plugin",
+                "theme",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/ernilambar/wp-welcome/issues",
+                "source": "https://github.com/ernilambar/wp-welcome/tree/1.0.1"
+            },
+            "time": "2022-09-29T06:39:40+00:00"
+        },
         {
             "name": "guzzlehttp/command",
             "version": "1.2.2",
