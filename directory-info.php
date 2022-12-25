@@ -3,7 +3,7 @@
  * Plugin Name: Directory Info
  * Plugin URI: https://github.com/ernilambar/directory-info/
  * Description: Info of themes and plugins.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: Nilambar Sharma
  * Author URI: https://www.nilambar.net/
  * Text Domain: directory-info
@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'DIRECTORY_INFO_VERSION', '1.0.3' );
+define( 'DIRECTORY_INFO_VERSION', '1.0.4' );
 define( 'DIRECTORY_INFO_SLUG', 'directory-info' );
 define( 'DIRECTORY_INFO_BASE', basename( dirname( __FILE__ ) ) );
 define( 'DIRECTORY_INFO_BASENAME', plugin_basename( __FILE__ ) );

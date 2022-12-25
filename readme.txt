@@ -4,7 +4,7 @@ Contributors: rabmalin
 Tags: theme info, plugin info
 Requires at least: 4.9
 Tested up to: 6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,9 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 * Click `GO`
 
 == Changelog ==
+
+= 1.0.4 - 25 Dec 2022 =
+* Fix CSS
 
 = 1.0.3 - 25 Dec 2022 =
 * Fix links
