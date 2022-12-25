@@ -18,6 +18,9 @@ class Helper {
 	 * Get themes info.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $wporg_id WordPress.org username.
+	 * @return arra Themes details.
 	 */
 	public static function get_themes_info( $wporg_id ) {
 		$output = array();
@@ -31,7 +34,7 @@ class Helper {
 		if ( false === $output || 1 === 2 ) {
 			$output = array();
 
-			$wporgClient = \Rarst\Guzzle\WporgClient::getClient();
+			$wporg_client = \Rarst\Guzzle\WporgClient::getClient();
 
 			$fields = array(
 				'downloaded',
@@ -39,21 +42,24 @@ class Helper {
 				'homepage',
 			);
 
-			$themes = $wporgClient->getThemesBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
+			$themes = $wporg_client->getThemesBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
 
 			if ( $themes ) {
 				$all_themes = $themes['themes'];
 
 				if ( ! empty( $all_themes ) ) {
-					$all_themes = array_map(function ($el) {
-						$item = $el;
-						$item['last_updated_w3c'] = date( DATE_W3C, strtotime( $el['last_updated_time'] ) );
-						return $item;
-					}, $all_themes);
+					$all_themes = array_map(
+						function ( $el ) {
+							$item = $el;
+
+							$item['last_updated_w3c'] = gmdate( DATE_W3C, strtotime( $el['last_updated_time'] ) );
+							return $item;
+						},
+						$all_themes
+					);
 
 					$output = $all_themes;
 				}
-
 			}
 
 			set_transient( $transient_key, $output, $transient_period );
@@ -66,6 +72,9 @@ class Helper {
 	 * Get plugins info.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param string $wporg_id WordPress.org username.
+	 * @return array Plugins details.
 	 */
 	public static function get_plugins_info( $wporg_id ) {
 		$output = array();
@@ -77,7 +86,7 @@ class Helper {
 		$output = get_transient( $transient_key );
 
 		if ( false === $output || 1 === 2 ) {
-			$wporgClient = \Rarst\Guzzle\WporgClient::getClient();
+			$wporg_client = \Rarst\Guzzle\WporgClient::getClient();
 
 			$fields = array(
 				'downloaded',
@@ -85,21 +94,24 @@ class Helper {
 				'homepage',
 			);
 
-			$plugins = $wporgClient->getPluginsBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
+			$plugins = $wporg_client->getPluginsBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
 
 			if ( $plugins ) {
 				$all_plugins = $plugins['plugins'];
 
 				if ( ! empty( $all_plugins ) ) {
-					$all_plugins = array_map(function ($el) {
-						$item = $el;
-						$item['last_updated_w3c'] = date( DATE_W3C, strtotime( $el['last_updated'] ) );
-						return $item;
-					}, $all_plugins);
+					$all_plugins = array_map(
+						function ( $el ) {
+							$item = $el;
+
+							$item['last_updated_w3c'] = gmdate( DATE_W3C, strtotime( $el['last_updated'] ) );
+							return $item;
+						},
+						$all_plugins
+					);
 
 					$output = $all_plugins;
 				}
-
 			}
 
 			set_transient( $transient_key, $output, $transient_period );
@@ -108,6 +120,14 @@ class Helper {
 		return $output;
 	}
 
+	/**
+	 * Return proper assets URL.
+	 *
+	 * @since 1.0.2
+	 *
+	 * @param string $glob Asset path with glob syntax.
+	 * @return string Parsed asset URL.
+	 */
 	public static function get_asset_by_glob_path( $glob ) {
 		$file_detail = glob( $glob );
 		$file_path   = reset( $file_detail );

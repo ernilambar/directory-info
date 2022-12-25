@@ -4,7 +4,7 @@ Contributors: rabmalin
 Tags: theme info, plugin info
 Requires at least: 4.9
 Tested up to: 6.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,15 +33,14 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 
 = How to use the plugin? =
 
-* Go to `Dashboard` -> `Directory Info`
+* Go to `Tools` -> `Directory Info`
 * Enter WordPress.org ID
 * Click `GO`
 
-= What options are there? =
-
-* `Forced Refresh` - Enable this to sync data from the directory. If disabled, cache will be kept for 24 hours.
-
 == Changelog ==
+
+= 1.0.3 - 25 Dec 2022 =
+* Fix links
 
 = 1.0.2 - 29 Sep 2022 =
 * Update dashboard
