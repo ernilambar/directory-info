@@ -45,3 +45,6 @@ if ( file_exists( DIRECTORY_INFO_DIR . '/vendor/autoload.php' ) ) {
 if ( class_exists( 'DirectoryInfo\Init' ) ) {
 	\DirectoryInfo\Init::register_services();
 }
+
+$di_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker( 'https://github.com/ernilambar/directory-info', __FILE__, DIRECTORY_INFO_SLUG );
+$di_update_checker->getVcsApi()->enableReleaseAssets();
