@@ -43,6 +43,7 @@ class Admin {
 		$obj->set_page(
 			array(
 				'page_title'    => esc_html__( 'Directory Info', 'directory-info' ),
+				/* translators: %s: Version */
 				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'directory-info' ), DIRECTORY_INFO_VERSION ),
 				'menu_title'    => esc_html__( 'Directory Info', 'directory-info' ),
 				'menu_slug'     => 'directory-info',
@@ -68,6 +69,11 @@ class Admin {
 		$obj->run();
 	}
 
+	/**
+	 * Render submission form.
+	 *
+	 * @since 1.0.0
+	 */
 	public function render_di_form() {
 		?>
 		<form action="" method="post" class="frm-directory-info" id="frm-directory-info">
@@ -77,7 +83,7 @@ class Admin {
 					<input type="text" name="wporg_id" id="wporg_id" value="" />
 				</label>
 				<button class="button button-secondary" name="btn-submit-di"><?php esc_attr_e( 'GO', 'directory-info' ); ?></button>
-				<div id="di-loading"><?php echo Helper::get_icon( 'spinner' ); ?></div>
+				<div id="di-loading"><?php echo Helper::get_icon( 'spinner' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 			</div><!-- .org-id-wrap -->
 		</form>
 
@@ -109,6 +115,13 @@ class Admin {
 		);
 	}
 
+	/**
+	 * Load assets.
+	 *
+	 * @since 1.0.2
+	 *
+	 * @param string $hook Hook name.
+	 */
 	public function load_assets( $hook ) {
 		if ( 'tools_page_directory-info' !== $hook ) {
 			return;
@@ -150,10 +163,19 @@ class Admin {
 		return $actions;
 	}
 
+	/**
+	 * AJAX callback for fetching details.
+	 *
+	 * @since 1.0.0
+	 */
 	public function get_details_ajax_callback() {
 		$output = array();
 
-		$id = ( isset( $_POST['wporg_id'] ) && ! empty( $_POST['wporg_id'] ) ) ? esc_attr( $_POST['wporg_id'] ) : null;
+		$id = null;
+
+		if ( isset( $_POST['wporg_id'] ) ) {
+			$id = sanitize_text_field( wp_unslash( $_POST['wporg_id'] ) );
+		}
 
 		if ( ! $id ) {
 			wp_send_json_error( new \WP_Error( 'Invalid ID.' ) );
@@ -161,14 +183,14 @@ class Admin {
 
 		$error = false;
 
-		$all_themes = Helper::get_themes_info( $id );
+		$all_themes  = Helper::get_themes_info( $id );
 		$all_plugins = Helper::get_plugins_info( $id );
 
 		if ( empty( $all_themes ) && empty( $all_plugins ) ) {
 			$error = true;
 		}
 
-		$output['themes'] = $all_themes;
+		$output['themes']  = $all_themes;
 		$output['plugins'] = $all_plugins;
 
 		if ( ! $error ) {
