@@ -22,6 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'DIRECTORY_INFO_VERSION', '1.0.2' );
 define( 'DIRECTORY_INFO_SLUG', 'directory-info' );
+define( 'DIRECTORY_INFO_BASE', basename( dirname( __FILE__ ) ) );
 define( 'DIRECTORY_INFO_BASENAME', plugin_basename( __FILE__ ) );
 define( 'DIRECTORY_INFO_BASE_FILENAME', plugin_basename( __FILE__ ) );
 define( 'DIRECTORY_INFO_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );

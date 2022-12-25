@@ -48,7 +48,7 @@ jQuery( function( $ ) {
 	};
 
 	const generateThemesMarkup = ( themes ) => {
-		if ( themes.length === 0 ) {
+		if ( false === themes || themes.length === 0 ) {
 			return;
 		}
 
@@ -80,7 +80,7 @@ jQuery( function( $ ) {
 	};
 
 	const generatePluginsMarkup = ( plugins ) => {
-		if ( plugins.length === 0 ) {
+		if ( false === plugins || plugins.length === 0 ) {
 			return;
 		}
 
@@ -147,7 +147,7 @@ jQuery( function( $ ) {
 			},
 
 			beforeSend() {
-				$loading.show();
+				$loading.css( 'display', 'inline-block' );
 				$( '#di-themes-output' ).html( '' );
 				$( '#di-plugins-output' ).html( '' );
 			},
@@ -165,7 +165,7 @@ jQuery( function( $ ) {
 					notify( 'No data found.', 'error' );
 				}
 
-				$loading.hide();
+				$loading.css( 'display', 'none' );
 				initTimeAgo();
 				initLazyLoad();
 			},
