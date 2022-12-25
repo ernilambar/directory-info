@@ -6,9 +6,9 @@
  * Copyright (C) 2018 Varun A P
  */
 
- .toastify {
+.toastify {
 	padding: 12px 20px;
-	color: #ffffff;
+	color: #fff;
 	display: inline-block;
 	box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
 	background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
@@ -30,7 +30,7 @@
 .toast-close {
 	background: transparent;
 	border: 0;
-	color: white;
+	color: #fff;
 	cursor: pointer;
 	font-family: inherit;
 	font-size: 1em;
@@ -75,11 +75,13 @@
 }
 
 @media only screen and (max-width: 360px) {
-	.toastify-right, .toastify-left {
-			margin-left: auto;
-			margin-right: auto;
-			left: 0;
-			right: 0;
-			max-width: fit-content;
+
+	.toastify-right,
+	.toastify-left {
+		margin-left: auto;
+		margin-right: auto;
+		left: 0;
+		right: 0;
+		max-width: fit-content;
 	}
 }

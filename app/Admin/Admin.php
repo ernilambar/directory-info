@@ -77,7 +77,7 @@ class Admin {
 					<input type="text" name="wporg_id" id="wporg_id" value="" />
 				</label>
 				<button class="button button-secondary" name="btn-submit-di"><?php esc_attr_e( 'GO', 'directory-info' ); ?></button>
-				<div id="di-loading" style="display:none;">Processing</div>
+				<div id="di-loading"><?php echo Helper::get_icon( 'spinner' ); ?></div>
 			</div><!-- .org-id-wrap -->
 		</form>
 
@@ -114,11 +114,11 @@ class Admin {
 			return;
 		}
 
-		wp_enqueue_style( 'directory-info-admin', DIRECTORY_INFO_URL . '/assets/directory.css', array(), DIRECTORY_INFO_VERSION );
-		wp_enqueue_script( 'directory-info-admin', DIRECTORY_INFO_URL . '/assets/directory.js', array( 'jquery' ), DIRECTORY_INFO_VERSION, true );
+		wp_enqueue_style( 'directory-info-admin', DIRECTORY_INFO_URL . '/build/directory.css', array(), DIRECTORY_INFO_VERSION );
+		wp_enqueue_script( 'directory-info-admin', DIRECTORY_INFO_URL . '/build/directory.js', array( 'jquery' ), DIRECTORY_INFO_VERSION, true );
 
 		$data = array(
-			'placeholder_url' => DIRECTORY_INFO_URL . '/assets/static/no-image.png',
+			'placeholder_url' => DIRECTORY_INFO_URL . '/' . Helper::get_asset_by_glob_path( DIRECTORY_INFO_DIR . '/build/images/no-image.*.png' ),
 		);
 
 		wp_localize_script( 'directory-info-admin', 'diObject', $data );
