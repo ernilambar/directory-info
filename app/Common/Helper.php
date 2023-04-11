@@ -7,6 +7,8 @@
 
 namespace DirectoryInfo\Common;
 
+use WpOrg\Requests\Requests;
+
 /**
  * Helper class.
  *
@@ -15,12 +17,70 @@ namespace DirectoryInfo\Common;
 class Helper {
 
 	/**
+	 * Return themes by author from WPORG API.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $slug WordPress.org username.
+	 * @return array Themes details.
+	 */
+	public static function get_themes_by_author( $slug ) {
+		$request_url = add_query_arg(
+			array(
+				'action'            => 'query_themes',
+				'request[author]'   => $slug,
+				'request[page]'     => 1,
+				'request[per_page]' => 100,
+				'request[fields]'   => array(
+					'downloaded'   => true,
+					'last_updated' => true,
+					'homepage'     => true,
+				),
+			),
+			'https://api.wordpress.org/themes/info/1.1/'
+		);
+
+		$response = Requests::get( $request_url, array( 'Content-Type' => 'application/json' ), array() );
+
+		return json_decode( $response->body, true );
+	}
+
+	/**
+	 * Return plugins by author from WPORG API.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $slug WordPress.org username.
+	 * @return array Plugins details.
+	 */
+	public static function get_plugins_by_author( $slug ) {
+		$request_url = add_query_arg(
+			array(
+				'action'            => 'query_plugins',
+				'request[author]'   => $slug,
+				'request[page]'     => 1,
+				'request[per_page]' => 100,
+				'request[fields]'   => array(
+					'downloaded'   => true,
+					'last_updated' => true,
+					'homepage'     => true,
+				),
+			),
+			'https://api.wordpress.org/plugins/info/1.1/'
+		);
+
+		$response = Requests::get( $request_url, array( 'Content-Type' => 'application/json' ), array() );
+
+		return json_decode( $response->body, true );
+	}
+
+	/**
 	 * Get themes info.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param string $wporg_id WordPress.org username.
-	 * @return arra Themes details.
+	 * @return array Themes details.
 	 */
 	public static function get_themes_info( $wporg_id ) {
 		$output = array();
@@ -34,15 +94,7 @@ class Helper {
 		if ( false === $output || 1 === 2 ) {
 			$output = array();
 
-			$wporg_client = \Rarst\Guzzle\WporgClient::getClient();
-
-			$fields = array(
-				'downloaded',
-				'last_updated',
-				'homepage',
-			);
-
-			$themes = $wporg_client->getThemesBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
+			$themes = self::get_themes_by_author( $wporg_id );
 
 			if ( $themes ) {
 				$all_themes = $themes['themes'];
@@ -86,15 +138,7 @@ class Helper {
 		$output = get_transient( $transient_key );
 
 		if ( false === $output || 1 === 2 ) {
-			$wporg_client = \Rarst\Guzzle\WporgClient::getClient();
-
-			$fields = array(
-				'downloaded',
-				'last_updated',
-				'homepage',
-			);
-
-			$plugins = $wporg_client->getPluginsBy( 'author', esc_attr( $wporg_id ), 1, 100, $fields );
+			$plugins = self::get_plugins_by_author( $wporg_id );
 
 			if ( $plugins ) {
 				$all_plugins = $plugins['plugins'];
