@@ -10,6 +10,7 @@ module.exports = {
 	...defaultConfig,
 	entry: {
 		directory: path.resolve( __dirname, 'src', 'directory.js' ),
+		index: path.resolve( __dirname, 'src', 'index.js' ),
 	},
 	plugins: [
 		...defaultConfig.plugins,

@@ -23,6 +23,9 @@
     "deploy": "shx rm -rf deploy/ && shx mkdir deploy && copy-files-from-to && cd deploy/ && cross-var shx mv temp $npm_package_name && cross-var bestzip ../$npm_package_name.zip * && cd .. && cross-var shx mv $npm_package_name.zip deploy/"
   },
   "browserslist": "> 1%, not dead",
+  "keywords": [
+    "directory"
+  ],
   "devDependencies": {
     "@wordpress/scripts": "^26.4.0",
     "bestzip": "^2.2.1",
@@ -36,7 +39,12 @@
     "shx": "^0.3.4"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "jquery-lazy": "^1.7.11",
+    "react-data-table-component": "^7.5.3",
     "toastify-js": "^1.12.0"
   }
 }
