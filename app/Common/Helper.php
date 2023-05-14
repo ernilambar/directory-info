@@ -7,8 +7,6 @@
 
 namespace DirectoryInfo\Common;
 
-use WpOrg\Requests\Requests;
-
 /**
  * Helper class.
  *
@@ -25,24 +23,32 @@ class Helper {
 	 * @return array Themes details.
 	 */
 	public static function get_themes_by_author( $slug ) {
-		$request_url = add_query_arg(
-			array(
-				'action'            => 'query_themes',
-				'request[author]'   => $slug,
-				'request[page]'     => 1,
-				'request[per_page]' => 100,
-				'request[fields]'   => array(
-					'downloaded'   => true,
-					'last_updated' => true,
-					'homepage'     => true,
-				),
+		$url = 'https://api.wordpress.org/themes/info/1.1/';
+
+		$data = array(
+			'action'            => 'query_themes',
+			'request[author]'   => $slug,
+			'request[page]'     => 1,
+			'request[per_page]' => 100,
+			'request[fields]'   => array(
+				'downloaded'   => true,
+				'last_updated' => true,
+				'homepage'     => true,
 			),
-			'https://api.wordpress.org/themes/info/1.1/'
 		);
 
-		$response = Requests::get( $request_url, array( 'Content-Type' => 'application/json' ), array() );
+		$url = $url . '?' . http_build_query( $data );
 
-		return json_decode( $response->body, true );
+		$response = wp_remote_get( $url );
+
+		$output = array();
+
+		if ( ! is_wp_error( $response ) ) {
+			$output = wp_remote_retrieve_body( $response );
+			$output = json_decode( $output, true );
+		}
+
+		return $output;
 	}
 
 	/**
@@ -54,24 +60,32 @@ class Helper {
 	 * @return array Plugins details.
 	 */
 	public static function get_plugins_by_author( $slug ) {
-		$request_url = add_query_arg(
-			array(
-				'action'            => 'query_plugins',
-				'request[author]'   => $slug,
-				'request[page]'     => 1,
-				'request[per_page]' => 100,
-				'request[fields]'   => array(
-					'downloaded'   => true,
-					'last_updated' => true,
-					'homepage'     => true,
-				),
+		$url = 'https://api.wordpress.org/plugins/info/1.1/';
+
+		$data = array(
+			'action'            => 'query_plugins',
+			'request[author]'   => $slug,
+			'request[page]'     => 1,
+			'request[per_page]' => 100,
+			'request[fields]'   => array(
+				'downloaded'   => true,
+				'last_updated' => true,
+				'homepage'     => true,
 			),
-			'https://api.wordpress.org/plugins/info/1.1/'
 		);
 
-		$response = Requests::get( $request_url, array( 'Content-Type' => 'application/json' ), array() );
+		$url = $url . '?' . http_build_query( $data );
 
-		return json_decode( $response->body, true );
+		$response = wp_remote_get( $url );
+
+		$output = array();
+
+		if ( ! is_wp_error( $response ) ) {
+			$output = wp_remote_retrieve_body( $response );
+			$output = json_decode( $output, true );
+		}
+
+		return $output;
 	}
 
 	/**
