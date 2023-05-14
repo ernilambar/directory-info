@@ -11,7 +11,8 @@
   "require": {
     "php": "^7.2.5 || ^8",
     "ernilambar/wp-welcome": "^1.0",
-    "yahnis-elsts/plugin-update-checker": "^5.0"
+    "yahnis-elsts/plugin-update-checker": "^5.0",
+    "ernilambar/optioner": "^2.0"
   },
 	"require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
