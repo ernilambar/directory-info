@@ -1,0 +1,25 @@
+.directory-info-header {
+
+	.navbar {
+		background-color: #11709f;
+		color: #fff;
+
+		.navbar-brand {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-size: 1.25rem;
+			font-weight: 600;
+			text-decoration: none;
+			white-space: nowrap;
+			margin-left: 0;
+
+			a {
+				color: #fff;
+
+				&:hover {
+					opacity: 0.9;
+				}
+			}
+		}
+	}
+}
