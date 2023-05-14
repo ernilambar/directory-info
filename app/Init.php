@@ -22,7 +22,9 @@ final class Init {
 	public static function get_services() {
 		return array(
 			Core\Core::class,
+			Core\Option::class,
 			Admin\Admin::class,
+			Options\Options::class,
 		);
 	}
 
