@@ -179,23 +179,6 @@ class Helper {
 	}
 
 	/**
-	 * Return proper assets URL.
-	 *
-	 * @since 1.0.2
-	 *
-	 * @param string $glob Asset path with glob syntax.
-	 * @return string Parsed asset URL.
-	 */
-	public static function get_asset_by_glob_path( $glob ) {
-		$file_detail = glob( $glob );
-		$file_path   = reset( $file_detail );
-		$exploded    = explode( DIRECTORY_INFO_BASE, $file_path );
-		$file_clean  = end( $exploded );
-
-		return trim( $file_clean, '/' );
-	}
-
-	/**
 	 * Return SVG icon markup.
 	 *
 	 * @since 1.0.0

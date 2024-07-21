@@ -131,7 +131,7 @@ class Admin {
 		wp_enqueue_script( 'directory-info-admin', DIRECTORY_INFO_URL . '/build/directory.js', array( 'jquery' ), DIRECTORY_INFO_VERSION, true );
 
 		$data = array(
-			'placeholder_url' => DIRECTORY_INFO_URL . '/' . Helper::get_asset_by_glob_path( DIRECTORY_INFO_DIR . '/build/images/no-image.*.png' ),
+			'placeholder_url' => DIRECTORY_INFO_URL . '/build/img/no-image.png',
 		);
 
 		wp_localize_script( 'directory-info-admin', 'diObject', $data );
