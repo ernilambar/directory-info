@@ -33,8 +33,8 @@ final class Init {
 	 * and call the register() method if it exists
 	 */
 	public static function register_services() {
-		foreach ( self::get_services() as $class ) {
-			$service = self::instantiate( $class );
+		foreach ( self::get_services() as $class_name ) {
+			$service = self::instantiate( $class_name );
 			if ( method_exists( $service, 'register' ) ) {
 				$service->register();
 			}
@@ -44,12 +44,10 @@ final class Init {
 	/**
 	 * Initialize the class.
 	 *
-	 * @param  class $class    Class from the services array.
-	 * @return class instance  New instance of the class.
+	 * @param  class $class_name Class from the services array.
+	 * @return class instance   New instance of the class.
 	 */
-	private static function instantiate( $class ) {
-		$service = new $class();
-
-		return $service;
+	private static function instantiate( $class_name ) {
+		return new $class_name();
 	}
 }

@@ -64,8 +64,6 @@ class Options {
 			)
 		);
 
-
-
 		$obj->set_sidebar(
 			array(
 				'render_callback' => array( $this, 'render_sidebar' ),

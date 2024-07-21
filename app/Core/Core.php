@@ -62,7 +62,5 @@ class Core {
 		wp_enqueue_style( 'dashboard-info-app', DIRECTORY_INFO_URL . '/build/index.css', array(), $script_asset['version'] );
 
 		wp_enqueue_script( 'dashboard-info-app', DIRECTORY_INFO_URL . '/build/index.js', $script_asset['dependencies'], $script_asset['version'], true );
-
-		// wp_localize_script( 'dashboard-info-app', 'GITBOARD', Helper::get_ajax_data() );
 	}
 }
