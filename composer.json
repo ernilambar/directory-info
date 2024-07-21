@@ -1,7 +1,7 @@
 {
   "name": "ernilambar/directory-info",
   "description": "Directory Info",
-	"license": "GPL-2.0-or-later",
+  "license": "GPL-2.0-or-later",
   "type": "wordpress-plugin",
   "authors": [
     {
@@ -38,13 +38,13 @@
     "sort-packages": true
   },
   "scripts": {
-		"lint": [
-			"@lint-php",
-			"@phpcs"
-		],
-		"lint-php": "@php ./vendor/bin/parallel-lint --colors --exclude .git --exclude vendor --exclude node_modules --exclude deploy .",
-		"phpcbf": "@php ./vendor/bin/phpcbf --report-full --report-summary .",
-		"phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary .",
-		"pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
-	}
+    "lint": [
+      "@lint-php",
+      "@phpcs"
+    ],
+    "lint-php": "@php ./vendor/bin/parallel-lint --colors --exclude .git --exclude vendor --exclude node_modules --exclude deploy .",
+    "phpcbf": "@php ./vendor/bin/phpcbf --report-full --report-summary .",
+    "phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary .",
+    "pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+  }
 }

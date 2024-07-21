@@ -1,6 +1,7 @@
+import "toastify-js/src/toastify.css";
 import './styles/directory.css';
 
-import './vendors/timeago.js';
+import timeago from 'timeago';
 import Toastify from 'toastify-js';
 import 'jquery-lazy';
 
