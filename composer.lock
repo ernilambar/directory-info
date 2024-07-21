@@ -50,16 +50,16 @@
         },
         {
             "name": "ernilambar/wp-welcome",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ernilambar/wp-welcome.git",
-                "reference": "abe5a2a15c9417517fbac4dcbf14ed8f8b2fb345"
+                "reference": "c07f5ed9435f7a14ec8ca3e4e79a71fb52502f55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/wp-welcome/zipball/abe5a2a15c9417517fbac4dcbf14ed8f8b2fb345",
-                "reference": "abe5a2a15c9417517fbac4dcbf14ed8f8b2fb345",
+                "url": "https://api.github.com/repos/ernilambar/wp-welcome/zipball/c07f5ed9435f7a14ec8ca3e4e79a71fb52502f55",
+                "reference": "c07f5ed9435f7a14ec8ca3e4e79a71fb52502f55",
                 "shasum": ""
             },
             "require": {
@@ -93,9 +93,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ernilambar/wp-welcome/issues",
-                "source": "https://github.com/ernilambar/wp-welcome/tree/2.0.0"
+                "source": "https://github.com/ernilambar/wp-welcome/tree/2.0.1"
             },
-            "time": "2024-06-18T11:08:12+00:00"
+            "time": "2024-07-21T16:38:59+00:00"
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",

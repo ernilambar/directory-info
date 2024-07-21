@@ -1,4 +1,4 @@
-import "toastify-js/src/toastify.css";
+import 'toastify-js/src/toastify.css';
 import './styles/directory.css';
 
 import timeago from 'timeago';
