@@ -36,7 +36,7 @@ class Options {
 		$obj->set_page(
 			array(
 				'page_title'     => esc_html__( 'Directory Info Settings', 'directory-info' ),
-				/* translators: %s: version. */
+				/* translators: %s: version */
 				'page_subtitle'  => sprintf( esc_html__( 'Version: %s', 'directory-info' ), DIRECTORY_INFO_VERSION ),
 				'menu_title'     => esc_html__( 'Directory Info Settings', 'directory-info' ),
 				'capability'     => 'manage_options',

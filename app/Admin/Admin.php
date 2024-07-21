@@ -43,7 +43,7 @@ class Admin {
 		$obj->set_page(
 			array(
 				'page_title'    => esc_html__( 'Directory Info', 'directory-info' ),
-				/* translators: %s: Version */
+				/* translators: %s: version */
 				'page_subtitle' => sprintf( esc_html__( 'Version: %s', 'directory-info' ), DIRECTORY_INFO_VERSION ),
 				'menu_title'    => esc_html__( 'Directory Info', 'directory-info' ),
 				'menu_slug'     => 'directory-info',

@@ -1,12 +1,12 @@
-import './sass/directory.scss';
+import './styles/directory.css';
 
 import './vendors/timeago.js';
 import Toastify from 'toastify-js';
 import 'jquery-lazy';
 
-import './images/no-image.png';
+import './img/no-image.png';
 
-jQuery( function( $ ) {
+jQuery( function ( $ ) {
 	const notify = ( message, type = 'success' ) => {
 		if ( ! message ) {
 			return;
@@ -63,7 +63,7 @@ jQuery( function( $ ) {
 
 		let cnt = 1;
 
-		themes.forEach( function( theme ) {
+		themes.forEach( function ( theme ) {
 			markup += `<tr>
 			<td>${ cnt }</td>
 			<td><a href="https://wordpress.org/themes/${ theme.slug }/" target="_blank">${ theme.name }</a></td>
@@ -95,7 +95,7 @@ jQuery( function( $ ) {
 
 		let cnt = 1;
 
-		plugins.forEach( function( plugin ) {
+		plugins.forEach( function ( plugin ) {
 			let thumbnailUrl = '';
 
 			if ( plugin.screenshots ) {
@@ -127,7 +127,7 @@ jQuery( function( $ ) {
 		return `<table>${ markup }</table>`;
 	};
 
-	$( '#frm-directory-info' ).on( 'submit', function() {
+	$( '#frm-directory-info' ).on( 'submit', function () {
 		const wporgId = $( '#wporg_id' ).val();
 
 		if ( '' === wporgId ) {
