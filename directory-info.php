@@ -15,6 +15,8 @@
 
 namespace DirectoryInfo;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -22,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'DIRECTORY_INFO_VERSION', '1.0.6' );
 define( 'DIRECTORY_INFO_SLUG', 'directory-info' );
-define( 'DIRECTORY_INFO_BASE', basename( dirname( __FILE__ ) ) );
+define( 'DIRECTORY_INFO_BASE', basename( __DIR__ ) );
 define( 'DIRECTORY_INFO_BASENAME', plugin_basename( __FILE__ ) );
 define( 'DIRECTORY_INFO_BASE_FILENAME', plugin_basename( __FILE__ ) );
 define( 'DIRECTORY_INFO_DIR', rtrim( plugin_dir_path( __FILE__ ), '/' ) );
@@ -44,8 +46,8 @@ if ( file_exists( DIRECTORY_INFO_DIR . '/vendor/autoload.php' ) ) {
 }
 
 if ( class_exists( 'DirectoryInfo\Init' ) ) {
-	\DirectoryInfo\Init::register_services();
+	Init::register_services();
 }
 
-$di_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker( 'https://github.com/ernilambar/directory-info', __FILE__, DIRECTORY_INFO_SLUG );
+$di_update_checker = PucFactory::buildUpdateChecker( 'https://github.com/ernilambar/directory-info', __FILE__, DIRECTORY_INFO_SLUG );
 $di_update_checker->getVcsApi()->enableReleaseAssets();

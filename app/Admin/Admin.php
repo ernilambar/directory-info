@@ -7,7 +7,7 @@
 
 namespace DirectoryInfo\Admin;
 
-use \DirectoryInfo\Common\Helper;
+use DirectoryInfo\Common\Helper;
 use Nilambar\Welcome\Welcome;
 
 /**
@@ -101,17 +101,17 @@ class Admin {
 	 *
 	 * @since 1.0.1
 	 *
-	 * @param Welcome $object Instance of Welcome.
+	 * @param Welcome $welcome_object Instance of Welcome.
 	 */
-	public function render_sidebar( $object ) {
-		$object->render_sidebar_box(
+	public function render_sidebar( $welcome_object ) {
+		$welcome_object->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
 				'icon'    => 'dashicons-editor-help',
 				'content' => '<h4>Questions, bugs or great ideas?</h4>
 				<p><a href="https://github.com/ernilambar/directory-info/issues" target="_blank">Create issue in the repo</a></p>',
 			),
-			$object
+			$welcome_object
 		);
 	}
 
