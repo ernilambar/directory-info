@@ -2,9 +2,8 @@
 
 Contributors: rabmalin
 Tags: theme info, plugin info
-Requires at least: 4.9
-Tested up to: 6.2
-Stable tag: 1.0.6
+Tested up to: 6.6
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +37,9 @@ This is a simple plugin to visualize your themes and plugins in the directory. S
 * Click `GO`
 
 == Changelog ==
+
+= 2.0.0 - 22 Jul 2024 =
+* Major code revamp
 
 = 1.0.6 - 11 Apr 2023 =
 * Replace WporgClient library with Requests

@@ -1,36 +1,61 @@
 require( 'dotenv' ).config();
 
 const path = require( 'path' );
-
-const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
-
-const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
+const CssMinimizerPlugin = require( 'css-minimizer-webpack-plugin' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const TerserPlugin = require( 'terser-webpack-plugin' );
 
 module.exports = {
-	...defaultConfig,
+	target: 'browserslist',
+	context: __dirname,
 	entry: {
 		directory: path.resolve( __dirname, 'src', 'directory.js' ),
-		index: path.resolve( __dirname, 'src', 'index.js' ),
 	},
-	plugins: [
-		...defaultConfig.plugins,
-		new BrowserSyncPlugin( {
-			proxy: process.env.DEV_SERVER_URL,
-			open: true,
-			files: [
-				{
-					match: [ '**/*.php' ],
-					fn( event ) {
-						if ( event === 'change' ) {
-							const bs =
-								require( 'browser-sync' ).get(
-									'bs-webpack-plugin'
-								);
-							bs.reload();
-						}
-					},
+	output: {
+		path: path.resolve( __dirname, 'build' ),
+		filename: '[name].js',
+		publicPath: './',
+	},
+	externals: {
+		jquery: 'jQuery',
+	},
+	mode: 'development',
+	devtool: 'inline-source-map',
+	performance: {
+		hints: false,
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				loader: 'babel-loader',
+				options: {
+					presets: [ [ '@babel/preset-env' ] ],
 				},
-			],
-		} ),
-	],
+			},
+			{
+				test: /\.css$/i,
+				use: [ MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader' ],
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[name][ext]',
+				},
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
+				type: 'asset/resource',
+				generator: {
+					filename: 'img/[name][ext]',
+				},
+			},
+		],
+	},
+	plugins: [ new MiniCssExtractPlugin( { filename: '[name].css' } ) ],
+	optimization: {
+		minimizer: [ new TerserPlugin( { extractComments: false } ), new CssMinimizerPlugin() ],
+	},
 };

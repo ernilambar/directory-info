@@ -1,2 +1,7 @@
+build
+composer.json
+deploy
 node_modules
-src/sass/vendors
+src/vendors
+vendor
+
