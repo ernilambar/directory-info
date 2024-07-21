@@ -1,5 +1,3 @@
-@import "./vendors/toastify";
-
 .org-id-wrap {
 	display: flex;
 	gap: 10px;
