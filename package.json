@@ -26,8 +26,8 @@
 			"!*.md",
 			"!*.png",
 			"!*.yaml",
-			"!languages/**/*",
-			"!src/**/*"
+			"!src/**/*",
+			"!vendor/yahnis-elsts/plugin-update-checker/languages/*"
 		]
 	},
 	"npmpackagejsonlint": {
