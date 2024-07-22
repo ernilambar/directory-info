@@ -44,7 +44,6 @@ if ( ! defined( 'WP_WELCOME_URL' ) ) {
 // Include autoload.
 if ( file_exists( DIRECTORY_INFO_DIR . '/vendor/autoload.php' ) ) {
 	require_once DIRECTORY_INFO_DIR . '/vendor/autoload.php';
-	require_once DIRECTORY_INFO_DIR . '/vendor/ernilambar/optioner/optioner.php';
 	require_once DIRECTORY_INFO_DIR . '/vendor/ernilambar/wp-welcome/init.php';
 }
 
