@@ -122,13 +122,14 @@ class Helper {
 						function ( $el ) {
 							$item = $el;
 
-							$item['last_updated_w3c'] = gmdate( DATE_W3C, strtotime( $el['last_updated_time'] ) );
+							$item['last_updated_w3c']       = gmdate( DATE_W3C, strtotime( $el['last_updated_time'] ) );
+							$item['last_updated_timestamp'] = strtotime( $el['last_updated_time'] );
 							return $item;
 						},
 						$all_themes
 					);
 
-					$output = $all_themes;
+					$output = self::get_sorted_array( $all_themes, 'last_updated_timestamp' );
 				}
 			}
 
@@ -168,13 +169,14 @@ class Helper {
 						function ( $el ) {
 							$item = $el;
 
-							$item['last_updated_w3c'] = gmdate( DATE_W3C, strtotime( $el['last_updated'] ) );
+							$item['last_updated_w3c']       = gmdate( DATE_W3C, strtotime( $el['last_updated'] ) );
+							$item['last_updated_timestamp'] = strtotime( $el['last_updated'] );
 							return $item;
 						},
 						$all_plugins
 					);
 
-					$output = $all_plugins;
+					$output = self::get_sorted_array( $all_plugins, 'last_updated_timestamp' );
 				}
 			}
 
@@ -182,6 +184,30 @@ class Helper {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Returns sorted array.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array  $arr       An array being sorted.
+	 * @param string $order_key Order key.
+	 * @param string $order     Order.
+	 * @return array Sorted array.
+	 */
+	public static function get_sorted_array( array $arr, string $order_key = 'timestamp', string $order = 'SORT_DESC' ): array {
+		if ( ! is_array( $arr ) || empty( $arr ) ) {
+			return array();
+		}
+
+		foreach ( $arr as $key => $item ) {
+			$timestamps[ $key ] = $item[ $order_key ];
+		}
+
+		array_multisort( $timestamps, ( 'SORT_DESC' === $order ) ? SORT_DESC : SORT_ASC, $arr );
+
+		return $arr;
 	}
 
 	/**
