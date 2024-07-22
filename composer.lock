@@ -4,50 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "475a343ae0068782609936ba5c1ec092",
+    "content-hash": "3e97013324844d17e340e58d14e92da4",
     "packages": [
-        {
-            "name": "ernilambar/optioner",
-            "version": "2.0.10",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ernilambar/optioner.git",
-                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ernilambar/optioner/zipball/8b4158a570ef193c522e2fcbcbe307a35ca4503d",
-                "reference": "8b4158a570ef193c522e2fcbcbe307a35ca4503d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nilambar Sharma",
-                    "email": "nilambar@outlook.com",
-                    "homepage": "https://www.nilambar.net",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Minimal option framework for WordPress.",
-            "homepage": "https://github.com/ernilambar/optioner",
-            "keywords": [
-                "option",
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/ernilambar/optioner/issues",
-                "source": "https://github.com/ernilambar/optioner/tree/2.0.10"
-            },
-            "time": "2024-06-18T09:46:28+00:00"
-        },
         {
             "name": "ernilambar/wp-welcome",
             "version": "2.0.1",
@@ -1084,16 +1042,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.10.1",
+            "version": "3.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877"
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/8f90f7a53ce271935282967f53d0894f8f1ff877",
-                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/86e5f5dd9a840c46810ebe5ff1885581c42a3017",
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017",
                 "shasum": ""
             },
             "require": {
@@ -1160,7 +1118,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-05-22T21:24:41+00:00"
+            "time": "2024-07-21T23:26:44+00:00"
         },
         {
             "name": "symfony/finder",

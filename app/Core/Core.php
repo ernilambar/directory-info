@@ -5,6 +5,8 @@
  * @package DirectoryInfo
  */
 
+declare(strict_types=1);
+
 namespace DirectoryInfo\Core;
 
 /**

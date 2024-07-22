@@ -5,6 +5,8 @@
  * @package DirectoryInfo
  */
 
+declare(strict_types=1);
+
 namespace DirectoryInfo\Admin;
 
 use DirectoryInfo\Common\Helper;
@@ -103,7 +105,7 @@ class Admin {
 	 *
 	 * @param Welcome $welcome_object Instance of Welcome.
 	 */
-	public function render_sidebar( $welcome_object ) {
+	public function render_sidebar( Welcome $welcome_object ) {
 		$welcome_object->render_sidebar_box(
 			array(
 				'title'   => 'Help &amp; Support',
@@ -122,7 +124,7 @@ class Admin {
 	 *
 	 * @param string $hook Hook name.
 	 */
-	public function load_assets( $hook ) {
+	public function load_assets( string $hook ) {
 		if ( 'tools_page_directory-info' !== $hook ) {
 			return;
 		}
@@ -145,7 +147,7 @@ class Admin {
 	 * @param array $actions Action links.
 	 * @return array Modified action links.
 	 */
-	public function customize_plugin_action_links( $actions ) {
+	public function customize_plugin_action_links( array $actions ): array {
 		$url = add_query_arg(
 			array(
 				'page' => DIRECTORY_INFO_SLUG,
@@ -153,14 +155,12 @@ class Admin {
 			admin_url( 'tools.php' )
 		);
 
-		$actions = array_merge(
+		return array_merge(
 			array(
 				'welcome' => '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Info Page', 'directory-info' ) . '</a>',
 			),
 			$actions
 		);
-
-		return $actions;
 	}
 
 	/**

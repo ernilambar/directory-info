@@ -1,11 +1,15 @@
+// Styles.
 import 'toastify-js/src/toastify.css';
 import './styles/directory.css';
 
+// Scripts.
 import timeago from 'timeago';
 import Toastify from 'toastify-js';
 import 'jquery-lazy';
 
+// Images.
 import './img/no-image.png';
+import './img/spinner.svg';
 
 jQuery( function ( $ ) {
 	const notify = ( message, type = 'success' ) => {
