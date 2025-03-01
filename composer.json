@@ -10,16 +10,15 @@
     }
   ],
   "require": {
-    "php": ">=7.2.24",
-    "ernilambar/wp-welcome": "^2.0",
-    "yahnis-elsts/plugin-update-checker": "^5.4"
+    "php": ">=7.4",
+    "ernilambar/wp-welcome": "^2",
+    "yahnis-elsts/plugin-update-checker": "^5"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1",
     "php-parallel-lint/php-parallel-lint": "^1.4",
-    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "phpcompatibility/php-compatibility": "dev-develop#3f79f96be9289a49eb85a4db3e8f5b7d55ba06d2",
     "slevomat/coding-standard": "^8.15",
-    "wp-cli/i18n-command": "^2.6",
     "wp-coding-standards/wpcs": "3.1"
   },
   "autoload": {
@@ -33,17 +32,19 @@
       "ergebnis/composer-normalize": true
     },
     "optimize-autoloader": true,
+    "platform": {
+      "php": "7.4"
+    },
     "process-timeout": 7200,
     "sort-packages": true
   },
   "scripts": {
+    "format": "@php ./vendor/bin/phpcbf --report-full --report-summary",
     "lint": [
       "@lint-php",
       "@phpcs"
     ],
     "lint-php": "@php ./vendor/bin/parallel-lint --colors --exclude .git --exclude vendor --exclude node_modules --exclude deploy .",
-    "phpcbf": "@php ./vendor/bin/phpcbf --report-full --report-summary .",
-    "phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary .",
-    "pot": "./vendor/bin/wp i18n make-pot . --exclude=build,deploy,node_modules,vendor --headers='{\"POT-Creation-Date\":\"\"}'"
+    "phpcs": "@php ./vendor/bin/phpcs --report-full --report-summary"
   }
 }
