@@ -3,13 +3,9 @@ import 'toastify-js/src/toastify.css';
 import './styles/directory.css';
 
 // Scripts.
-import timeago from 'timeago';
 import Toastify from 'toastify-js';
 import 'jquery-lazy';
-
-// Images.
-import './img/no-image.png';
-import './img/spinner.svg';
+import * as timeago from 'timeago.js';
 
 jQuery( function ( $ ) {
 	const notify = ( message, type = 'success' ) => {
@@ -38,7 +34,9 @@ jQuery( function ( $ ) {
 	};
 
 	const initTimeAgo = () => {
-		$( 'time.timeago' ).timeago();
+		const nodes = document.querySelectorAll( 'time.timeago' );
+		timeago.render( nodes );
+		timeago.cancel();
 	};
 
 	const initLazyLoad = () => {
